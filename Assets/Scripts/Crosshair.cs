@@ -7,7 +7,7 @@ public class Crosshair : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,7 +17,7 @@ public class Crosshair : MonoBehaviour
 
         var target = GameObject.Find ("Crosshair");
 
-        target.transform.position = new Vector3 (pos.x, pos.y, pos.z + 1);
+        target.transform.position = new Vector3 (pos.x, pos.y, -9);
 
         print(this.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition));
     }
