@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     public int speed;
     private bool move;
     private Vector2 start;
+    public bool Attack;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class EnemyAI : MonoBehaviour
         Active = false;
         //Goal = this.gameObject.transform.GetChild(0);
         damaged = false;
+        Attack = false;
         StartCoroutine(ExecuteAfterTime(timer));
     }
 
@@ -29,12 +31,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (damaged == true)
         {
+            Escape = true; 
             Destroy(gameObject, 1);
         }
         if (Active == true) {move = true;}
 
         if (Escape == true) {move = false;}
         
+        if (Attack == true)
+        {
+
+        }
+
         if (move == true)
         {
             float step =  speed * Time.deltaTime; // calculate distance to move
@@ -60,10 +68,15 @@ public class EnemyAI : MonoBehaviour
         IEnumerator ExecuteAfterTime2(float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("Hit");
         Active = false;
+        Attack = true;
         Escape = true; 
         Destroy(gameObject, 1);
 		
 	}
+        void OnMouseOver(){
+        if (Input.GetMouseButtonDown (0)){
+            damaged = true;
+        }
+    }
 }
