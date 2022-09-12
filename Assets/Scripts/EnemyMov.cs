@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyMov : MonoBehaviour
 {
     public int timer;
     public int timer2;
@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
 	}
         void OnMouseOver(){
         if (Input.GetMouseButtonDown (0)){
-            damaged = true;
+            //damaged = true;
         }
     }
 }

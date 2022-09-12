@@ -6,6 +6,7 @@ public class Crosshair : MonoBehaviour
 {
     public bool attack;
     public LayerMask layer;
+    public GameObject Enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,16 @@ public class Crosshair : MonoBehaviour
         print(this.GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition));
 
 
-        //Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        //RaycastHit hit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
+        //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
         //layer = LayerMask.NameToLayer("Enemy");
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //if (Physics.Raycast(transform.position, fwd, out hit, layer))
-        //print("Found an object - distance: " + hit.distance);
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+        if (Physics.Raycast(transform.position, fwd, out hit, layer))
+                //Destroy(hit.transform.gameObject);
+            hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
+            //hit.collider.SendMessageUpwards("damaged");
+        }
     }
 }
