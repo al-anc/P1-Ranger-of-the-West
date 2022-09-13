@@ -15,6 +15,7 @@ public class EnemyMov : MonoBehaviour
     private Vector2 start;
     public bool Attack;
     public int Strength;
+    public GameObject Player;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,7 @@ public class EnemyMov : MonoBehaviour
         if (Attack == true)
         {
             //THIS IS WHERE YOU PUT IN THE SCORE
-            // Gameobject.score = score - Strength;
+            // Player.GetComponent<Script for Score>().score = Player.GetComponent<Script for Score>().score - Strength;
         }
 
         if (move == true)
