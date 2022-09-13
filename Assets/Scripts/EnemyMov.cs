@@ -14,6 +14,7 @@ public class EnemyMov : MonoBehaviour
     private bool move;
     private Vector2 start;
     public bool Attack;
+    public int Strength;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,8 @@ public class EnemyMov : MonoBehaviour
         
         if (Attack == true)
         {
-
+            //THIS IS WHERE YOU PUT IN THE SCORE
+            // Gameobject.score = score - Strength;
         }
 
         if (move == true)
