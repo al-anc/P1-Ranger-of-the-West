@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        enemies = 19;
+        enemies = 40;
         bonusScore = 5000;
         InvokeRepeating("setBonusScore", 1, 1);
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public void setBonusScore()
     {
         bonusScore -= 100;
-        bonusText.text = "Bonus " + bonusScore.ToString();
+        bonusText.text = "Bonus: " + bonusScore.ToString();
         if (bonusScore == 0)
         {
             CancelInvoke("setBonusScore");
@@ -62,7 +62,20 @@ public class PlayerController : MonoBehaviour
         {
             score += bonusScore;
             CancelInvoke("setBonusScore");
-            scoreValue.text = "Score " + score.ToString();
+            scoreValue.text = "Score: " + score.ToString();
         }
+    }
+    public float setScore(float s)
+    {
+        score += s;
+        scoreValue.text = "Score: " + score.ToString();
+        return score;
+    }
+
+    public float setEnemies(float e)
+    {
+        enemies -= e;
+        enemiesText.text = "Enemies: " + enemies.ToString();
+        return enemies;
     }
 }

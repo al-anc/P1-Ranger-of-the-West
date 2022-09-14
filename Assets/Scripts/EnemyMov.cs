@@ -76,10 +76,11 @@ public class EnemyMov : MonoBehaviour
         Attack = true;
         Escape = true; 
         Destroy(gameObject, 1);
-		Player.GetComponent<PlayerController>().enemies = Player.GetComponent<PlayerController>().enemies -1;
 	}
         void OnMouseOver(){
-        if (Input.GetMouseButtonDown (0)){
+        if (Input.GetMouseButtonDown (0) && damaged == false){
+            Player.GetComponent<PlayerController>().setScore(100);
+            Player.GetComponent<PlayerController>().setEnemies(1);
             damaged = true;
         }
     }
