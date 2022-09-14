@@ -19,6 +19,7 @@ public class HitDetection : MonoBehaviour
     void OnMouseOver(){
         if (Input.GetMouseButtonDown (0)){
             print ("CLICK");
+            //gameObject.GetComponent<EnemyMov>().damaged = true;
         }
     }
 }

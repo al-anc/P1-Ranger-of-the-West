@@ -9,10 +9,10 @@ public class EnemyMov : MonoBehaviour
     public bool Active;
     private bool Escape;
     public bool damaged;
-    public Vector2 TransformPosition;
+    public Vector3 TransformPosition;
     public int speed;
     private bool move;
-    private Vector2 start;
+    private Vector3 start;
     public bool Attack;
     public int Strength;
     public GameObject Player;
@@ -26,6 +26,7 @@ public class EnemyMov : MonoBehaviour
         damaged = false;
         Attack = false;
         StartCoroutine(ExecuteAfterTime(timer));
+        TransformPosition.z = transform.position.z;
     }
 
     // Update is called once per frame
@@ -49,12 +50,12 @@ public class EnemyMov : MonoBehaviour
         if (move == true)
         {
             float step =  speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector2.MoveTowards(transform.position, TransformPosition, step);
+            transform.position = Vector3.MoveTowards(transform.position, TransformPosition, step);
         }
         else if (move == false)
         {
             float step =  speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector2.MoveTowards(transform.position, start, step);            
+            transform.position = Vector3.MoveTowards(transform.position, start, step);            
         }
         if (Active = false)
         {
