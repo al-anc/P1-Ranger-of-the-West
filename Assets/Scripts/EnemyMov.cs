@@ -43,7 +43,7 @@ public class EnemyMov : MonoBehaviour
         if (Attack == true)
         {
             //THIS IS WHERE YOU PUT IN THE SCORE
-            // Player.GetComponent<Script for Score>().score = Player.GetComponent<Script for Score>().score - Strength;
+            //Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
         }
 
         if (move == true)

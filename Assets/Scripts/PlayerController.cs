@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Text scoreValue;
     public Text bonusText;
     public Text enemiesText;
+    public Text gameOverText;
 
     public bool gameOver;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         scoreValue.text = ("Score: " + score.ToString());
         bonusText.text = ("Bonus: " + bonusScore.ToString());
         enemiesText.text = ("Enemies: " + enemies.ToString());
+        gameOverText.text = ("");
         
         gameOver = false;
     }
@@ -35,7 +37,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (enemies == 0)
+        {
+            gameOver = true;
+            gameOverText.text = ("Game Over! Press Esc to exit game.");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log ("Game Closed");
+            Application.Quit();
+        }
     }
 
     public void setBonusScore()
