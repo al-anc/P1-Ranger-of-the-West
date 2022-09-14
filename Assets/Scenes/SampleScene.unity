@@ -4326,6 +4326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd6952630169004bba8199bb0c56528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   bonusScore: 0
   enemies: 0
   scoreValue: {fileID: 2102473573}
@@ -6977,8 +6978,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
 --- !u!222 &1639806536
