@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static float score;
+    public float score;
     public float bonusScore;
     public float enemies;
 
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        enemies = 20;
+        enemies = 19;
         bonusScore = 5000;
         InvokeRepeating("setBonusScore", 1, 1);
 
@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
         if (enemies == 0)
         {
             gameOver = true;
-            gameOverText.text = ("Game Over! Press Esc to exit game.");
+            enemiesText.text = ("Enemies: " + enemies.ToString());
+            gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

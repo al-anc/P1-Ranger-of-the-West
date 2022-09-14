@@ -43,7 +43,7 @@ public class EnemyMov : MonoBehaviour
         if (Attack == true)
         {
             //THIS IS WHERE YOU PUT IN THE SCORE
-            //Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
+            Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
         }
 
         if (move == true)
@@ -75,7 +75,7 @@ public class EnemyMov : MonoBehaviour
         Attack = true;
         Escape = true; 
         Destroy(gameObject, 1);
-		
+		Player.GetComponent<PlayerController>().enemies = Player.GetComponent<PlayerController>().enemies -1;
 	}
         void OnMouseOver(){
         if (Input.GetMouseButtonDown (0)){
