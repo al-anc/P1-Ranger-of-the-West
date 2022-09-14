@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
         scoreValue.text = ("Score: " + score.ToString());
         bonusText.text = ("Bonus: " + bonusScore.ToString());
-        enemiesText.text = ("Enemies " + enemies.ToString());
+        enemiesText.text = ("Enemies: " + enemies.ToString());
         
         gameOver = false;
     }
