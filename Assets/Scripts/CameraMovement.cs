@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public float step;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +15,8 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float step = 1;
-
         var cameraPosition = Camera.main.gameObject.transform.position;
-        cameraPosition.x += step;
+        cameraPosition.x +=Time.deltaTime*2;
         Camera.main.gameObject.transform.position = cameraPosition;
     }
 }
