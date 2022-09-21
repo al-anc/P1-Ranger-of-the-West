@@ -16,6 +16,7 @@ public class EnemyMov : MonoBehaviour
     public bool Attack;
     public int Strength;
     public GameObject Player;
+    public GameObject Points;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class EnemyMov : MonoBehaviour
         {
             Escape = true; 
             Destroy(gameObject, 1);
+            Points.SetActive(true);
         }
         if (Active == true) {move = true;}
 

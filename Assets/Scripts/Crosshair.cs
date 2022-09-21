@@ -30,6 +30,7 @@ public class Crosshair : MonoBehaviour
         if (Physics.Raycast(transform.position, fwd, out hit, layer))
                 //Destroy(hit.transform.gameObject);
             hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
+            //Player.GetComponent<PlayerController>().score;
             //hit.collider.SendMessageUpwards("damaged");
         }
     }

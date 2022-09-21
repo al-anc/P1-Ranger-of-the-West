@@ -23,4 +23,17 @@ public class Menus : MonoBehaviour
     public void ResetGame() {
         SceneManager.LoadScene("Main Menu");
     }
+        public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Retry!");
+        Time.timeScale = 1;
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1;
+    }
+
 }

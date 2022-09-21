@@ -13,10 +13,18 @@ public class PlayerController : MonoBehaviour
     public Text bonusText;
     public Text enemiesText;
     public Text gameOverText;
+    public GameObject Pausemenu;
+    public bool Paused;
+    public bool attack;
+    public LayerMask layer;
+    public GameObject Enemy;
 
     public bool gameOver;
 
-    
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +55,38 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log ("Game Closed");
             Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.P) && Paused == false)
+        {
+            Pausemenu.SetActive(true);
+            Paused = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.P)&& Paused == true)
+        {
+            Pausemenu.SetActive(false);
+            Paused = false;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+                this.transform.position = Input.mousePosition;
+
+
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        RaycastHit hit;
+        //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
+        //layer = LayerMask.NameToLayer("Enemy");
+        if (Input.GetButtonDown("Fire1"))
+        {
+        if (Physics.Raycast(transform.position, fwd, out hit, layer))
+                //Destroy(hit.transform.gameObject);
+            hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
+            score = score + 50;
+            //hit.collider.SendMessageUpwards("damaged");
         }
     }
 
