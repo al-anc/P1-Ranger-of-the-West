@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log ("Game Closed");
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.P) && Paused == false)
+        if (Input.GetButtonDown("Pause") && Paused == false)
         {
             Pausemenu.SetActive(true);
             Paused = true;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = true;
         }
 
-        else if (Input.GetKeyDown(KeyCode.P)&& Paused == true)
+        else if (Input.GetButtonDown("Pause")&& Paused == true)
         {
             Pausemenu.SetActive(false);
             Paused = false;
