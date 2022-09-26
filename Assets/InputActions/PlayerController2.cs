@@ -15,7 +15,7 @@ public class PlayerController2 : MonoBehaviour
         shootAction = playerInput.actions["Shoot"];
         shootAction.ReadValue<float>();
 
-        playerInput.SwitchActionMap();
+        //playerInput.SwitchActionMap();
         
     }
 
