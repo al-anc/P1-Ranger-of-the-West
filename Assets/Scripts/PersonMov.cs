@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMov : MonoBehaviour
+public class PersonMov : MonoBehaviour
 {
     public int timer;
     public int timer2;
@@ -50,7 +50,6 @@ public class EnemyMov : MonoBehaviour
         if (Attack == true)
         {
             //THIS IS WHERE YOU PUT IN THE SCORE
-            Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
         }
 
         if (move == true)
@@ -85,8 +84,7 @@ public class EnemyMov : MonoBehaviour
 	}
         void OnMouseOver(){
         if (Input.GetMouseButtonDown (0) && damaged == false){
-            Player.GetComponent<PlayerController>().setScore(100);
-            Player.GetComponent<PlayerController>().setEnemies(1);
+            Player.GetComponent<PlayerController>().setScore(-100);
             damaged = true;
         }
     }

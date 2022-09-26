@@ -6,8 +6,11 @@ public class Crosshair : MonoBehaviour
 {
     public bool attack;
     public LayerMask layer;
+    public LayerMask layer2;
     public GameObject Enemy;
+    public GameObject Hostage;
     public Camera camera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,9 @@ public class Crosshair : MonoBehaviour
             hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
             //Player.GetComponent<PlayerController>().score;
             //hit.collider.SendMessageUpwards("damaged");
+            if (Physics.Raycast(transform.position, fwd, out hit, layer2))
+                //Destroy(hit.transform.gameObject);
+                hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
         }
     }
 }

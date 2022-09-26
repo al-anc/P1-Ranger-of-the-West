@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = false;
+            if (Paused == false)
+            {
+                Pausemenu.SetActive(false);
+            }
         }
                 this.transform.position = Input.mousePosition;
 

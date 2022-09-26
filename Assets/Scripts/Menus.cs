@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
+    public GameObject Player;
+    public GameObject PauseMenu;
+
     public void PlayGame()
     {
         Debug.Log("Game Started!");
@@ -27,6 +30,12 @@ public class Menus : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Retry!");
+        Time.timeScale = 1;
+    }
+    public void ResumeGame()
+    {
+        PauseMenu.SetActive(false);
+        Player.GetComponent<PlayerController>().Paused = false;
         Time.timeScale = 1;
     }
 
