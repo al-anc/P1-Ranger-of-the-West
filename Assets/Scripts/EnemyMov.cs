@@ -37,11 +37,11 @@ public class EnemyMov : MonoBehaviour
         {
             Escape = true; 
             Points.SetActive(true);
-            Destroy(gameObject, 1);
             if (Points.activeInHierarchy == true)
             {
                 Destroy(Points, 0.2f);
             }
+            Destroy(gameObject, 1);
         }
         if (Active == true) {move = true;}
 
