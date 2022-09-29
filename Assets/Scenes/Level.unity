@@ -2445,7 +2445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &383301359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4099,7 +4099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -610.2, y: -35.4}
+  m_AnchoredPosition: {x: -610.2, y: -35.399994}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &595596251
@@ -7383,7 +7383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 8151a804f64ba4640bce9a4f31884b9d, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 1719109954}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -7417,6 +7417,7 @@ MonoBehaviour:
   canvas: {fileID: 1750936296}
   canvasRectTransform: {fileID: 1750936297}
   cursorSpeed: 1000
+  padding: 35
 --- !u!4 &1059632506
 Transform:
   m_ObjectHideFlags: 0
@@ -10881,7 +10882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 601.3, y: -17.40001}
+  m_AnchoredPosition: {x: 601.3, y: -17.400024}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1481601437
@@ -13371,7 +13372,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
