@@ -244,6 +244,7 @@ MonoBehaviour:
   Strength: 50
   Player: {fileID: 274852265475146023, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
   Points: {fileID: 1432265606704802908}
+  Camera: {fileID: 3160884407376252842, guid: b23f52da48b26eb4786c9a4260d17cc7, type: 3}
 --- !u!54 &7954097253091213473
 Rigidbody:
   m_ObjectHideFlags: 0

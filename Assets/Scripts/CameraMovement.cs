@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -19,12 +20,12 @@ public class CameraMovement : MonoBehaviour
         cameraPosition.x +=Time.deltaTime*speed;
         if (Input.GetButton("Sprint"))
         {
-            speed = 8;
+            Time.timeScale = 1.5f;
             Debug.Log("ButtonPressed");
         }
         else
         {
-            speed = 2;
+            Time.timeScale = 1;
         }
 
         Camera.main.gameObject.transform.position = cameraPosition;

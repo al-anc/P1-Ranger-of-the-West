@@ -15,8 +15,10 @@ public class EnemyMov : MonoBehaviour
     private Vector3 start;
     public bool Attack;
     public int Strength;
+    private bool Speedup;
     public GameObject Player;
     public GameObject Points;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +28,17 @@ public class EnemyMov : MonoBehaviour
         //Goal = this.gameObject.transform.GetChild(0);
         damaged = false;
         Attack = false;
-        StartCoroutine(ExecuteAfterTime(timer));
         TransformPosition.z = transform.position.z;
+    }
+
+    //Update is called once per frame
+    void Update()
+    {
+        StartCoroutine(ExecuteAfterTime(timer));
+        if (Speedup == true)
+        {
+            //timer = timer-10;
+        }
     }
 
     // Update is called once per frame
@@ -40,6 +51,7 @@ public class EnemyMov : MonoBehaviour
             if (Points.activeInHierarchy == true)
             {
                 Destroy(Points, 0.2f);
+                //Points = null;
             }
             Destroy(gameObject, 1);
         }
