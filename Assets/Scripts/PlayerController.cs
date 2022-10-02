@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         bonusScore = 5000;
         InvokeRepeating("setBonusScore", 1, 1);
 
-        scoreValue.text = ("Score: " + score.ToString());
+        scoreValue.text = ("0000000" + score.ToString());
         bonusText.text = ("Bonus: " + bonusScore.ToString());
         enemiesText.text = ("Enemies: " + enemies.ToString());
         gameOverText.text = ("");
@@ -92,6 +92,19 @@ public class PlayerController : MonoBehaviour
             score = score + 50;
             //hit.collider.SendMessageUpwards("damaged");
         }
+
+        if(score >= 100){
+            scoreValue.text = "00000" + score.ToString();
+            }
+
+        if(score >= 1000){
+            scoreValue.text = "0000" + score.ToString();
+            }
+
+        if(score >= 10000){
+            scoreValue.text = "000" + score.ToString();
+            }
+
     }
 
     public void setBonusScore()
