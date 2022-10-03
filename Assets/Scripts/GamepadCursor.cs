@@ -102,8 +102,8 @@ public class GamepadCursor : MonoBehaviour
     {
         if (playerInput.currentControlScheme == mouseScheme && previousControlScheme != mouseScheme)
         {
-            cursorTransform.gameObject.SetActive(false);
-            Cursor.visible = true;
+            cursorTransform.gameObject.SetActive(true);
+            Cursor.visible = false;
             currentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
             previousControlScheme = mouseScheme;
         }
