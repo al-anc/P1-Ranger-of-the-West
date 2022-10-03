@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7954097253091213473}
   - component: {fileID: 7954097253091213477}
   - component: {fileID: 7954097253091213482}
+  - component: {fileID: 1603405942}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -162,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 1915777894742015163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4556952, y: -0.00000011920929, z: 0.7514429}
-  m_LocalScale: {x: 0.4000564, y: 0.4000564, z: 0.4000564}
+  m_LocalScale: {x: 0.40005636, y: 0.40005636, z: 0.40005636}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1915777894484355794}
@@ -234,17 +235,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d23a1f26a10004bafe5cc9e5477d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
+  timer: 16
   timer2: 5
   Active: 0
   damaged: 0
-  TransformPosition: {x: 0, y: 2, z: 0}
+  TransformPosition: {x: -3.28, y: 1.54, z: 0}
   speed: 5
   Attack: 0
   Strength: 50
-  Player: {fileID: 274852265475146023, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
+  Player: {fileID: 0}
   Points: {fileID: 1432265606704802908}
-  Camera: {fileID: 3160884407376252842, guid: b23f52da48b26eb4786c9a4260d17cc7, type: 3}
 --- !u!54 &7954097253091213473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -287,6 +287,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e00ee9f86151449a367dd47b1a33bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1603405942
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915777894742015163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7144edd62611d5543a9d58397fb75f08, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4997762857282090309
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,10 +373,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +50
+  m_text: +150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
