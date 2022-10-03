@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     public bool Paused;
     public bool attack;
     public LayerMask layer;
+    public GameObject Crosshair;
     public GameObject Enemy;
+    public Camera cam;
 
     public bool gameOver;
 
@@ -81,17 +83,32 @@ public class PlayerController : MonoBehaviour
                 this.transform.position = Input.mousePosition;
 
 
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        Vector3 fwd = Crosshair.transform.TransformDirection(Vector3.forward);
+        Vector3 pos = Crosshair.transform.position;
+        pos = cam.ScreenToWorldPoint(pos);
         RaycastHit hit;
         //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
         //layer = LayerMask.NameToLayer("Enemy");
         if (Input.GetButtonDown("Fire1"))
         {
-        if (Physics.Raycast(transform.position, fwd, out hit, layer))
-                //Destroy(hit.transform.gameObject);
-            hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
-            score = score + 50;
-            //hit.collider.SendMessageUpwards("damaged");
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 1000, layer))
+            {
+                Debug.Log("Raycast shot");
+                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+                if (enemy != null && !enemy.damaged)
+                {
+                    Destroy(enemy.GetComponent<Collider>());
+                    enemy.damaged = true;
+                }
+                Debug.Log("Fired");
+                //hit.collider.SendMessageUpwards("damaged");
+            }
+            else
+            {
+                Debug.Log("Missed");
+            }
+                
         }
 
         if(score >= 100){

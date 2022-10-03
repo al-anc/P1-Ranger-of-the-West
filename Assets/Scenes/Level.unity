@@ -17249,6 +17249,14 @@ PrefabInstance:
       value: Crosshair
       objectReference: {fileID: 0}
     - target: {fileID: 274852265475146040, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 274852265475146040, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
+      propertyPath: Crosshair
+      value: 
+      objectReference: {fileID: 993143278}
+    - target: {fileID: 274852265475146040, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
       propertyPath: Pausemenu
       value: 
       objectReference: {fileID: 655186312}

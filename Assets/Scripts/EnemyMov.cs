@@ -18,6 +18,7 @@ public class EnemyMov : MonoBehaviour
     private bool Speedup;
     public GameObject Player;
     public GameObject Points;
+    private bool isNull;
 
 
     // Start is called before the first frame update
@@ -29,53 +30,54 @@ public class EnemyMov : MonoBehaviour
         damaged = false;
         Attack = false;
         TransformPosition.z = transform.position.z;
+        isNull = false;
     }
 
     //Update is called once per frame
     void Update()
     {
-        StartCoroutine(ExecuteAfterTime(timer));
-        if (Speedup == true)
+        if (!isNull)
         {
-            //timer = timer-10;
+            StartCoroutine(ExecuteAfterTime(timer));
+            if (Speedup == true)
+            {
+                //timer = timer-10;
+            }
         }
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (damaged == true)
+        if (damaged == true && !isNull)
         {
-            Escape = true; 
-            Points.SetActive(true);
-            if (Points.activeInHierarchy == true)
-            {
-                Destroy(Points, 0.2f);
-                //Points = null;
-            }
-            Destroy(gameObject, 1);
-        }
-        if (Active == true) {move = true;}
+            AddPoints();
+            Escape = true;
+            Die();
 
-        if (Escape == true) {move = false;}
+        }
+        if (Active == true && !isNull) {move = true;}
+
+        if (Escape == true && !isNull) {move = false;}
         
-        if (Attack == true)
+        if (Attack == true && !isNull)
         {
             //THIS IS WHERE YOU PUT IN THE SCORE
             Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
         }
 
-        if (move == true)
+        if (move == true && !isNull)
         {
             float step =  speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, TransformPosition, step);
         }
-        else if (move == false)
+        else if (move == false && !isNull)
         {
             float step =  speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, start, step);            
         }
-        if (Active = false)
+        if (Active = false && !isNull)
         {
             //transform.Translate(-Goalx, -Goaly, 0);
         }
@@ -95,11 +97,22 @@ public class EnemyMov : MonoBehaviour
         Escape = true; 
         Destroy(gameObject, 1);
 	}
-        void OnMouseOver(){
-        if (Input.GetMouseButtonDown (0) && damaged == false){
-            Player.GetComponent<PlayerController>().setScore(100);
-            Player.GetComponent<PlayerController>().setEnemies(1);
-            damaged = true;
-        }
+    void AddPoints()
+    {
+        Player.GetComponent<PlayerController>().setScore(150);
+        Player.GetComponent<PlayerController>().setEnemies(1);
+    }
+
+    void Die()
+    {
+            Points.SetActive(true);
+            if (Points.activeInHierarchy == true)
+            {
+                Destroy(Points, 0.2f);
+                //Points = null;
+            }
+            isNull = true;
+            Destroy(gameObject, 1);
+
     }
 }
