@@ -7395,7 +7395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1059632504}
-  cursorTransform: {fileID: 993143279}
+  cursorTransform: {fileID: 383301359}
   canvas: {fileID: 1750936296}
   canvasRectTransform: {fileID: 1750936297}
   cursorSpeed: 1000
