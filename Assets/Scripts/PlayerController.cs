@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        enemies = 40;
-        bonusScore = 5000;
+        enemies = 52;
+        bonusScore = 15000;
         InvokeRepeating("setBonusScore", 1, 1);
 
         scoreValue.text = ("0000000" + score.ToString());
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
+            Time.timeScale = 0;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

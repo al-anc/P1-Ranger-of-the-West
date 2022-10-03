@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class CameraMovement : MonoBehaviour
 {
     public float speed;
+    [SerializeField]
+    private PlayerController pC;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +20,23 @@ public class CameraMovement : MonoBehaviour
     {
         var cameraPosition = Camera.main.gameObject.transform.position;
         cameraPosition.x +=Time.deltaTime*speed;
-        if (Input.GetButton("Sprint"))
+        if (!pC.gameOver)
         {
-            Time.timeScale = 1.5f;
-            Debug.Log("ButtonPressed");
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+            if (Input.GetButton("Sprint") && !pC.Paused)
+            {
+                Time.timeScale = 1.5f;
+                Debug.Log("ButtonPressed");
+            }
+            else if (pC.Paused)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        } 
+            
 
         Camera.main.gameObject.transform.position = cameraPosition;
     }

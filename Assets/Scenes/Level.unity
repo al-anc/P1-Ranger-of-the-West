@@ -5788,7 +5788,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 839877246}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750936298}
+        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &839877246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6889,6 +6901,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 274852265475146022, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
   m_PrefabInstance: {fileID: 274852265358633161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &993143280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 274852265475146040, guid: e06a4b53f21433949b2fb0747b9e262e, type: 3}
+  m_PrefabInstance: {fileID: 274852265358633161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993143278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd6952630169004bba8199bb0c56528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &996778975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1915777894742015160, guid: a23d3665136dc6546846b6369575353a, type: 3}
@@ -13458,8 +13481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71c8ad7c94f8554fa8a7d7ebc5a9e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  PauseMenu: {fileID: 0}
+  Player: {fileID: 993143278}
+  PauseMenu: {fileID: 655186312}
 --- !u!1 &1755692801
 GameObject:
   m_ObjectHideFlags: 0
@@ -17592,6 +17615,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3160884407376252846, guid: b23f52da48b26eb4786c9a4260d17cc7, type: 3}
+      propertyPath: pC
+      value: 
+      objectReference: {fileID: 993143280}
     - target: {fileID: 3160884407376252847, guid: b23f52da48b26eb4786c9a4260d17cc7, type: 3}
       propertyPath: m_RootOrder
       value: 0
