@@ -252,7 +252,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
                     ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": ""Tap,Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Fire"",

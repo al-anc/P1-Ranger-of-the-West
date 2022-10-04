@@ -243,7 +243,7 @@ MonoBehaviour:
   speed: 5
   Attack: 0
   Strength: 50
-  Player: {fileID: 0}
+  Player: {fileID: 8778847604096319365, guid: f0b9a19f5b22e964c99d86622e386b9b, type: 3}
   Points: {fileID: 1432265606704802908}
 --- !u!54 &7954097253091213473
 Rigidbody:

@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Fire(InputAction.CallbackContext context)
     {
-
+        
     }
     private void Pause(InputAction.CallbackContext context)
     {
