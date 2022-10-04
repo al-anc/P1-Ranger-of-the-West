@@ -51,7 +51,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""id"": ""f8f0e74e-f151-4fec-9fe2-76c3ea846e38"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -251,7 +251,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<XInputController>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -844,7 +844,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": """",
                     ""id"": ""3e8e83b9-c8ec-4134-960a-d041d2b8b4ca"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
