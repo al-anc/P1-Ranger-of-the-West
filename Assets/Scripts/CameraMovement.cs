@@ -2,16 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
     public float speed;
     [SerializeField]
     private PlayerController pC;
+    [SerializeField]
+    private RangerOfTheWestActions playerInput;
+    private InputAction sprint;
+    private InputAction sprintEnd;
+    [SerializeField]
+    private bool isSprinting;
+    
+    
+    private void Awake()
+    {
+        playerInput = new RangerOfTheWestActions();
+    }
 
+    private void OnEnable()
+    {
+        sprint = playerInput.Player.Sprint;
+        sprint.Enable();
+        sprint.performed += Sprint;
+
+        sprintEnd = playerInput.Player.SprintEnd;
+        sprintEnd.Enable();
+        sprintEnd.performed += SprintEnd;
+    }
+
+    private void OnDisable()
+    {
+        sprint.Disable();
+        sprintEnd.Disable();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
+        isSprinting = false;
         speed = 2;
     }
 
@@ -22,10 +53,9 @@ public class CameraMovement : MonoBehaviour
         cameraPosition.x +=Time.deltaTime*speed;
         if (!pC.gameOver)
         {
-            if (Input.GetButton("Sprint") && !pC.Paused)
+            if (isSprinting && !pC.Paused)
             {
                 Time.timeScale = 1.5f;
-                Debug.Log("ButtonPressed");
             }
             else if (pC.Paused)
             {
@@ -39,5 +69,14 @@ public class CameraMovement : MonoBehaviour
             
 
         Camera.main.gameObject.transform.position = cameraPosition;
+    }
+    private void Sprint(InputAction.CallbackContext context)
+    {
+        isSprinting = true;
+    }
+
+    private void SprintEnd(InputAction.CallbackContext context)
+    {
+        isSprinting = false;
     }
 }

@@ -62,6 +62,15 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SprintEnd"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2dab926-1bea-4031-9a20-b5d859055868"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,7 +287,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""name"": """",
                     ""id"": ""9874b123-3c4e-402e-bc0a-0fdbc45964c1"",
                     ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Sprint"",
@@ -289,10 +298,32 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""name"": """",
                     ""id"": ""6a58b63a-2dd7-4d04-b6a9-bb7e2d70cba0"",
                     ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ed7a77f-9efd-4a9a-bed8-0020a4839070"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SprintEnd"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""324dee07-261d-4dc7-9533-214e62f8c51d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SprintEnd"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -933,6 +964,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_SprintEnd = m_Player.FindAction("SprintEnd", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1008,6 +1040,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_SprintEnd;
     public struct PlayerActions
     {
         private @RangerOfTheWestActions m_Wrapper;
@@ -1016,6 +1049,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @SprintEnd => m_Wrapper.m_Player_SprintEnd;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1037,6 +1071,9 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @SprintEnd.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
+                @SprintEnd.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
+                @SprintEnd.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1053,6 +1090,9 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @SprintEnd.started += instance.OnSprintEnd;
+                @SprintEnd.performed += instance.OnSprintEnd;
+                @SprintEnd.canceled += instance.OnSprintEnd;
             }
         }
     }
@@ -1213,6 +1253,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSprintEnd(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
