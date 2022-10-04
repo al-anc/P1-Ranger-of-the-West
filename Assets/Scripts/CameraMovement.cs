@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     private PlayerController pC;
     [SerializeField]
-    private RangerOfTheWestActions playerInput;
+    private PlayerInput playerInput;
     private InputAction sprint;
     private InputAction sprintEnd;
     [SerializeField]
@@ -19,24 +19,20 @@ public class CameraMovement : MonoBehaviour
     
     private void Awake()
     {
-        playerInput = new RangerOfTheWestActions();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
     {
-        sprint = playerInput.Player.Sprint;
-        sprint.Enable();
-        sprint.performed += Sprint;
+        playerInput.actions["Sprint"].performed += Sprint;
 
-        sprintEnd = playerInput.Player.SprintEnd;
-        sprintEnd.Enable();
-        sprintEnd.performed += SprintEnd;
+        playerInput.actions["SprintEnd"].performed += SprintEnd;
     }
 
     private void OnDisable()
     {
-        sprint.Disable();
-        sprintEnd.Disable();
+        playerInput.actions["Sprint"].performed -= Sprint;
+        playerInput.actions["SprintEnd"].performed -= SprintEnd;
     }
     
     // Start is called before the first frame update
