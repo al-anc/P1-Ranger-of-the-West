@@ -29,7 +29,7 @@
                     "id": "f8f0e74e-f151-4fec-9fe2-76c3ea846e38",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -221,7 +221,7 @@
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Tap,Hold",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Fire",

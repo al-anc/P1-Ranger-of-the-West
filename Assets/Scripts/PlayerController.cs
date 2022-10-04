@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     [SerializeField]
     private PlayerInput playerControls;
+    private RangerOfTheWestActions Actions;
 
     public bool gameOver;
 
@@ -31,16 +32,19 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1;
         playerControls = GetComponent<PlayerInput>();
+        Actions = new RangerOfTheWestActions();
     }
 
     private void OnEnable()
     {
         playerControls.actions["Fire"].performed += Fire;
+        Actions.Enable();
     }
 
     private void OnDisable()
     {
         playerControls.actions["Fire"].performed -= Fire;
+        Actions.Disable();
     }
 
     // Start is called before the first frame update
@@ -83,6 +87,28 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+            RaycastHit hit;
+                bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
+                if(Fire)
+        {
+        Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+            if (Physics.Raycast(ray, out hit, 1000, layer))
+            {
+                Debug.Log("Raycast shot");
+                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+                if (enemy != null && !enemy.damaged)
+                {
+                    Destroy(enemy.GetComponent<Collider>());
+                    enemy.damaged = true;
+                }
+                Debug.Log("Fired");
+                //hit.collider.SendMessageUpwards("damaged");
+            }
+            else
+            {
+                Debug.Log("Missed");
+            }
+        }
 
         else if (Input.GetButtonDown("Pause")&& Paused == true)
         {
@@ -100,7 +126,6 @@ public class PlayerController : MonoBehaviour
 
 
         Vector3 fwd = Crosshair.transform.TransformDirection(Vector3.forward);
-        RaycastHit hit;
         //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
         //layer = LayerMask.NameToLayer("Enemy");
         // if (Input.GetButtonDown("Fire1"))
@@ -169,23 +194,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Fire(InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
-            if (Physics.Raycast(ray, out hit, 1000, layer))
-            {
-                Debug.Log("Raycast shot");
-                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
-                if (enemy != null && !enemy.damaged)
-                {
-                    Destroy(enemy.GetComponent<Collider>());
-                    enemy.damaged = true;
-                }
-                Debug.Log("Fired");
-                //hit.collider.SendMessageUpwards("damaged");
-            }
-            else
-            {
-                Debug.Log("Missed");
-            }
+
     }
 }

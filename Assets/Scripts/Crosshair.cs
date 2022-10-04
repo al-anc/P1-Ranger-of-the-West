@@ -10,13 +10,23 @@ public class Crosshair : MonoBehaviour
     public GameObject Enemy;
     public GameObject Hostage;
     public Camera camera;
+    private RangerOfTheWestActions Actions;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Actions = new RangerOfTheWestActions();
     }
+
+        private void OnEnable()
+    {
+        Actions.Enable();
+    }
+        private void OnDisable()
+        {
+            Actions.Disable();
+        }
 
     // Update is called once per frame
     void Update()
@@ -28,11 +38,13 @@ public class Crosshair : MonoBehaviour
         RaycastHit hit;
         //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
         //layer = LayerMask.NameToLayer("Enemy");
-        if (Input.GetButtonDown("Fire1"))
+                bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
+                if(Fire)
         {
         if (Physics.Raycast(transform.position, fwd, out hit, layer))
                 //Destroy(hit.transform.gameObject);
             hit.collider.gameObject.GetComponent<EnemyMov>().damaged = true;
+            Debug.Log("Hit");
             //Player.GetComponent<PlayerController>().score;
             //hit.collider.SendMessageUpwards("damaged");
             if (Physics.Raycast(transform.position, fwd, out hit, layer2))
