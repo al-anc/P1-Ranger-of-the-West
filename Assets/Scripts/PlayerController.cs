@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,12 +22,25 @@ public class PlayerController : MonoBehaviour
     public GameObject Crosshair;
     public GameObject Enemy;
     public Camera cam;
+    [SerializeField]
+    private PlayerInput playerControls;
 
     public bool gameOver;
 
     void Awake()
     {
         Time.timeScale = 1;
+        playerControls = GetComponent<PlayerInput>();
+    }
+
+    private void OnEnable()
+    {
+        playerControls.actions["Fire"].performed += Fire;
+    }
+
+    private void OnDisable()
+    {
+        playerControls.actions["Fire"].performed -= Fire;
     }
 
     // Start is called before the first frame update
@@ -86,32 +100,30 @@ public class PlayerController : MonoBehaviour
 
 
         Vector3 fwd = Crosshair.transform.TransformDirection(Vector3.forward);
-        Vector3 pos = Crosshair.transform.position;
-        pos = cam.ScreenToWorldPoint(pos);
         RaycastHit hit;
         //var EnemyAI : enemy = hit.collider.GetComponent(EnemyAI);
         //layer = LayerMask.NameToLayer("Enemy");
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 1000, layer))
-            {
-                Debug.Log("Raycast shot");
-                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
-                if (enemy != null && !enemy.damaged)
-                {
-                    Destroy(enemy.GetComponent<Collider>());
-                    enemy.damaged = true;
-                }
-                Debug.Log("Fired");
-                //hit.collider.SendMessageUpwards("damaged");
-            }
-            else
-            {
-                Debug.Log("Missed");
-            }
+        // if (Input.GetButtonDown("Fire1"))
+        // {
+        //     Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+        //     if (Physics.Raycast(ray, out hit, 1000, layer))
+        //     {
+        //         Debug.Log("Raycast shot");
+        //         EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+        //         if (enemy != null && !enemy.damaged)
+        //         {
+        //             Destroy(enemy.GetComponent<Collider>());
+        //             enemy.damaged = true;
+        //         }
+        //         Debug.Log("Fired");
+        //         //hit.collider.SendMessageUpwards("damaged");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Missed");
+        //     }
                 
-        }
+        // }
 
         if(score >= 100){
             scoreValue.text = "00000" + score.ToString();
@@ -154,5 +166,26 @@ public class PlayerController : MonoBehaviour
         enemies -= e;
         enemiesText.text = "Enemies: " + enemies.ToString();
         return enemies;
+    }
+    private void Fire(InputAction.CallbackContext context)
+    {
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+            if (Physics.Raycast(ray, out hit, 1000, layer))
+            {
+                Debug.Log("Raycast shot");
+                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+                if (enemy != null && !enemy.damaged)
+                {
+                    Destroy(enemy.GetComponent<Collider>());
+                    enemy.damaged = true;
+                }
+                Debug.Log("Fired");
+                //hit.collider.SendMessageUpwards("damaged");
+            }
+            else
+            {
+                Debug.Log("Missed");
+            }
     }
 }

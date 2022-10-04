@@ -11,8 +11,6 @@ public class CameraMovement : MonoBehaviour
     private PlayerController pC;
     [SerializeField]
     private PlayerInput playerInput;
-    private InputAction sprint;
-    private InputAction sprintEnd;
     [SerializeField]
     private bool isSprinting;
     
