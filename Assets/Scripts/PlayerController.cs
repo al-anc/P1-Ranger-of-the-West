@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Text enemiesText;
     public Text gameOverText;
     public GameObject Pausemenu;
+    public GameObject GameOverMenu;
     public bool Paused;
     public bool attack;
     public LayerMask layer;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        enemies = 52;
+        enemies = 51;
         bonusScore = 15000;
         InvokeRepeating("setBonusScore", 1, 1);
 
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         if (enemies == 0)
         {
+            GameOverMenu.SetActive(true);
             gameOver = true;
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
