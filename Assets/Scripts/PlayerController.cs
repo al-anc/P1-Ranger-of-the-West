@@ -38,12 +38,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerControls.actions["Fire"].performed += Fire;
+        playerControls.actions["Pause"].performed += Pause;
         Actions.Enable();
     }
 
     private void OnDisable()
     {
         playerControls.actions["Fire"].performed -= Fire;
+        playerControls.actions["Pause"].performed -= Pause;
         Actions.Disable();
     }
 
@@ -79,14 +81,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log ("Game Closed");
             Application.Quit();
         }
-        if (Input.GetButtonDown("Pause") && Paused == false)
-        {
-            Pausemenu.SetActive(true);
-            Paused = true;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
             RaycastHit hit;
                 bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
                 if(Fire)
@@ -109,20 +103,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Missed");
             }
         }
-
-        else if (Input.GetButtonDown("Pause")&& Paused == true)
-        {
-            Pausemenu.SetActive(false);
-            Paused = false;
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = false;
-            if (Paused == false)
-            {
-                Pausemenu.SetActive(false);
-            }
-        }
-                this.transform.position = Input.mousePosition;
 
 
         Vector3 fwd = Crosshair.transform.TransformDirection(Vector3.forward);
@@ -195,5 +175,28 @@ public class PlayerController : MonoBehaviour
     private void Fire(InputAction.CallbackContext context)
     {
 
+    }
+    private void Pause(InputAction.CallbackContext context)
+    {
+        if (Paused == false)
+        {
+            Pausemenu.SetActive(true);
+            Paused = true;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Paused == true)
+        {
+            Pausemenu.SetActive(false);
+            Paused = false;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
+            if (Paused == false)
+            {
+                Pausemenu.SetActive(false);
+            }
+        }
     }
 }

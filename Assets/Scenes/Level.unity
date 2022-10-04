@@ -7539,7 +7539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1059632504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7583,7 +7583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1059632504}
-  cursorTransform: {fileID: 383301359}
+  cursorTransform: {fileID: 993143279}
   canvas: {fileID: 1750936296}
   canvasRectTransform: {fileID: 1750936297}
   cursorSpeed: 1000

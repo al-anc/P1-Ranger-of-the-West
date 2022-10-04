@@ -71,6 +71,15 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""54fe48b3-4382-46eb-aa7b-001febfa21ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -324,6 +333,28 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""SprintEnd"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46f29f62-78a9-4b56-bdc8-a5412b3f8c1c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cd08981-bf4d-4fa3-99de-c94c7d594fc0"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -965,6 +996,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_SprintEnd = m_Player.FindAction("SprintEnd", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1041,6 +1073,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_SprintEnd;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @RangerOfTheWestActions m_Wrapper;
@@ -1050,6 +1083,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @SprintEnd => m_Wrapper.m_Player_SprintEnd;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1074,6 +1108,9 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 @SprintEnd.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
                 @SprintEnd.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
                 @SprintEnd.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintEnd;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1093,6 +1130,9 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 @SprintEnd.started += instance.OnSprintEnd;
                 @SprintEnd.performed += instance.OnSprintEnd;
                 @SprintEnd.canceled += instance.OnSprintEnd;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1254,6 +1294,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
         void OnFire(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnSprintEnd(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
