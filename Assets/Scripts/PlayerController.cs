@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float enemies;
 
     public Text scoreValue;
+    public Text scoreValue2;
     public Text bonusText;
     public Text enemiesText;
     public Text gameOverText;
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
+            scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
             Time.timeScale = 0;  
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
+            scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
             Time.timeScale = 0;
