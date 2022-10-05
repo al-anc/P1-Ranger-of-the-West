@@ -31,6 +31,7 @@ public class EnemyMov : MonoBehaviour
         damaged = false;
         Attack = false;
         TransformPosition.z = transform.position.z;
+        start.z = transform.position.z;
         isNull = false;
     }
 
@@ -61,6 +62,8 @@ public class EnemyMov : MonoBehaviour
             AddPoints();
             Escape = true;
             Die();
+            float step =  speed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, start, step); 
 
         }
         if (Active == true && !isNull) {move = true;}
@@ -113,7 +116,6 @@ public class EnemyMov : MonoBehaviour
     {
             PlaySound(collectedClip);
             Points.SetActive(true);
-            transform.Translate(start);
             if (Points.activeInHierarchy == true)
             {
                 Destroy(Points, 0.2f);
