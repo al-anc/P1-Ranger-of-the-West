@@ -38,14 +38,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerControls.actions["Fire"].performed += Fire;
-        playerControls.actions["Pause"].performed += Pause;
+        //playerControls.actions["Pause"].performed += Pause;
         Actions.Enable();
     }
 
     private void OnDisable()
     {
         playerControls.actions["Fire"].performed -= Fire;
-        playerControls.actions["Pause"].performed -= Pause;
+        //playerControls.actions["Pause"].performed -= Pause;
         Actions.Disable();
     }
 
@@ -80,6 +80,30 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log ("Game Closed");
             Application.Quit();
+        }
+        bool Pauses = Actions.UI.Pause.ReadValue<float>() > 0.1f;
+            if (Pauses && Paused == false)
+            {
+                Pause();
+            }
+        if (Paused == true)
+        {
+            bool Restart = Actions.UI.Submit.ReadValue<float>() > 0.1f;
+            if (Restart)
+            {
+                Pausemenu.GetComponent<Menus>().RetryLevel();
+            }
+            bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
+            if (Resume)
+            {
+                //Pausemenu.GetComponent<Menus>().ResumeGame();
+                Pause();
+            }
+            bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
+            if (MainMenu)
+            {
+                Pausemenu.GetComponent<Menus>().LoadMenu();
+            }
         }
         //     RaycastHit hit;
         //         bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
@@ -194,7 +218,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    private void Pause(InputAction.CallbackContext context)
+    private void Pause()
     {
         if (Paused == false)
         {

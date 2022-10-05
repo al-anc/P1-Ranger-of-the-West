@@ -7,11 +7,42 @@ public class Menus : MonoBehaviour
 {
     public GameObject Player;
     public GameObject PauseMenu;
+    private RangerOfTheWestActions Actions;
+    private static int Level = 0;
 
+        private void OnEnable()
+    {
+        Actions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Actions.Disable();
+    
+    }
+
+        void Update()
+        {
+            if (Level == 0)
+        {
+            bool Play = Actions.UI.Submit.ReadValue<float>() > 0.1f;
+            if (Play)
+            {
+                PlayGame();
+            }
+            bool Exit = Actions.UI.Back.ReadValue<float>() > 0.1f;
+            if (Exit)
+            {
+                ExitGame();
+            }
+        }
+        }
+    
     public void PlayGame()
     {
         Debug.Log("Game Started!");
         SceneManager.LoadScene("Level");
+        Level = 1;
     }
     void Start()
     {
@@ -41,7 +72,7 @@ public class Menus : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
     }
 
