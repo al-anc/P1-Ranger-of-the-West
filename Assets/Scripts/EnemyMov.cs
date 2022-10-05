@@ -21,10 +21,12 @@ public class EnemyMov : MonoBehaviour
     private bool isNull;
     public AudioSource audiosource;
     public AudioClip collectedClip;
+    private bool allreadyAttack;
 
     // Start is called before the first frame update
     void Start()
     {
+        allreadyAttack = false;
         start = transform.position;
         Active = false;
         //Goal = this.gameObject.transform.GetChild(0);
@@ -72,8 +74,14 @@ public class EnemyMov : MonoBehaviour
         
         if (Attack == true && !isNull)
         {
+            if (!allreadyAttack)
+            {
             //THIS IS WHERE YOU PUT IN THE SCORE
-            Player.GetComponent<PlayerController>().score = Player.GetComponent<PlayerController>().score - Strength;
+            SubtractPoints();
+            move = false;
+            Attack = false;
+            allreadyAttack = true;
+            }
         }
 
         if (move == true && !isNull)
@@ -110,6 +118,15 @@ public class EnemyMov : MonoBehaviour
     {
         Player.GetComponent<PlayerController>().setScore(150);
         Player.GetComponent<PlayerController>().setEnemies(1);
+    }
+
+    void SubtractPoints()
+    {
+        if (Attack == true)
+        {
+        Player.GetComponent<PlayerController>().SubtractScore(150);
+        Player.GetComponent<PlayerController>().setEnemies(1);
+        }
     }
 
     void Die()

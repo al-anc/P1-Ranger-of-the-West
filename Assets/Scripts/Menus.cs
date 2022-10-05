@@ -18,24 +18,11 @@ public class Menus : MonoBehaviour
     private void OnDisable()
     {
         Actions.Disable();
-    
     }
 
         void Update()
         {
-            if (Level == 0)
-        {
-            bool Play = Actions.UI.Submit.ReadValue<float>() > 0.1f;
-            if (Play)
-            {
-                PlayGame();
-            }
-            bool Exit = Actions.UI.Back.ReadValue<float>() > 0.1f;
-            if (Exit)
-            {
-                ExitGame();
-            }
-        }
+
         }
     
     public void PlayGame()

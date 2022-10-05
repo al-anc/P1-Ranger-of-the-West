@@ -78,6 +78,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (score < 0)
+        {
+            GameOverMenu.SetActive(true);
+            gameOver = true;
+            enemiesText.text = ("Enemies: " + enemies.ToString());
+            gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
+            Time.timeScale = 0;  
+        }
         if (enemies == 0)
         {
             GameOverMenu.SetActive(true);
@@ -196,6 +205,13 @@ public class PlayerController : MonoBehaviour
     public float setScore(float s)
     {
         score += s;
+        scoreValue.text = "Score: " + score.ToString();
+        return score;
+    }
+
+        public float SubtractScore(float s)
+    {
+        score = score - s;
         scoreValue.text = "Score: " + score.ToString();
         return score;
     }
