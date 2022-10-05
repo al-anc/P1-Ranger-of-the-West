@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerControls;
     private RangerOfTheWestActions Actions;
 
+
+    public AudioSource audiosource;
+    public AudioClip collectedClip;
+
     public bool gameOver;
 
     void Awake()
@@ -41,6 +45,11 @@ public class PlayerController : MonoBehaviour
         //playerControls.actions["Pause"].performed += Pause;
         Actions.Enable();
     }
+
+    public void PlaySound(AudioClip clip)
+  {
+    audiosource.PlayOneShot(clip);
+  }
 
     private void OnDisable()
     {
@@ -200,6 +209,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+        PlaySound(collectedClip);
         if (Physics.Raycast(ray, out hit, 1000, layer))
         {
             Debug.Log("Raycast shot");

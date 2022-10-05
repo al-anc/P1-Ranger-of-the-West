@@ -7485,7 +7485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Restart
+  m_text: 'Restart (A)
 
 '
   m_isRightToLeft: 0
@@ -8235,6 +8235,8 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   cam: {fileID: 963194227}
   playerControls: {fileID: 993143287}
+  audiosource: {fileID: 993143289}
+  collectedClip: {fileID: 0}
   gameOver: 0
 --- !u!82 &993143289
 AudioSource:
@@ -11945,7 +11947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resume
+  m_text: Resume (B)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18038,7 +18040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Main Menu (Y)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
