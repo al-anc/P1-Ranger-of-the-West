@@ -244,10 +244,10 @@ MonoBehaviour:
   speed: 5
   Attack: 0
   Strength: 50
-  Player: {fileID: 8778847604096319365, guid: f0b9a19f5b22e964c99d86622e386b9b, type: 3}
+  Player: {fileID: 0}
   Points: {fileID: 1432265606704802908}
   audiosource: {fileID: 5528387860672294960}
-  collectedClip: {fileID: 0}
+  collectedClip: {fileID: 8300000, guid: e0738724f9a91e14e8f85784f02bb9c3, type: 3}
 --- !u!54 &7954097253091213473
 Rigidbody:
   m_ObjectHideFlags: 0
