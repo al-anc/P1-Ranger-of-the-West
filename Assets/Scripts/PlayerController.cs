@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource audiosource;
     public AudioClip collectedClip;
+    public AudioClip collectedClip2;
 
     public bool gameOver;
 

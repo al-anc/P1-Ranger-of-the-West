@@ -19,7 +19,8 @@ public class EnemyMov : MonoBehaviour
     public GameObject Player;
     public GameObject Points;
     private bool isNull;
-
+    public AudioSource audiosource;
+    public AudioClip collectedClip;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class EnemyMov : MonoBehaviour
         TransformPosition.z = transform.position.z;
         isNull = false;
     }
+
+        public void PlaySound(AudioClip clip)
+  {
+    audiosource.PlayOneShot(clip);
+  }
 
     //Update is called once per frame
     void Update()
@@ -105,7 +111,9 @@ public class EnemyMov : MonoBehaviour
 
     void Die()
     {
+            PlaySound(collectedClip);
             Points.SetActive(true);
+            transform.Translate(start);
             if (Points.activeInHierarchy == true)
             {
                 Destroy(Points, 0.2f);
