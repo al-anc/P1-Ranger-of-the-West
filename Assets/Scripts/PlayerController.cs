@@ -81,28 +81,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log ("Game Closed");
             Application.Quit();
         }
-            RaycastHit hit;
-                bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
-                if(Fire)
-        {
-        Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
-            if (Physics.Raycast(ray, out hit, 1000, layer))
-            {
-                Debug.Log("Raycast shot");
-                EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
-                if (enemy != null && !enemy.damaged)
-                {
-                    Destroy(enemy.GetComponent<Collider>());
-                    enemy.damaged = true;
-                }
-                Debug.Log("Fired");
-                //hit.collider.SendMessageUpwards("damaged");
-            }
-            else
-            {
-                Debug.Log("Missed");
-            }
-        }
+        //     RaycastHit hit;
+        //         bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
+        //         if(Fire)
+        // {
+        // Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+        //     if (Physics.Raycast(ray, out hit, 1000, layer))
+        //     {
+        //         Debug.Log("Raycast shot");
+        //         EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+        //         if (enemy != null && !enemy.damaged)
+        //         {
+        //             Destroy(enemy.GetComponent<Collider>());
+        //             enemy.damaged = true;
+        //         }
+        //         Debug.Log("Fired");
+        //         //hit.collider.SendMessageUpwards("damaged");
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Missed");
+        //     }
+        // }
 
 
         Vector3 fwd = Crosshair.transform.TransformDirection(Vector3.forward);
@@ -174,7 +174,25 @@ public class PlayerController : MonoBehaviour
     }
     private void Fire(InputAction.CallbackContext context)
     {
-        
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Crosshair.transform.position);
+        if (Physics.Raycast(ray, out hit, 1000, layer))
+        {
+            Debug.Log("Raycast shot");
+            EnemyMov enemy = hit.transform.GetComponent<EnemyMov>();
+            if (enemy != null && !enemy.damaged)
+            {
+                Destroy(enemy.GetComponent<Collider>());
+                enemy.damaged = true;
+            }
+            Debug.Log("Fired");
+            //hit.collider.SendMessageUpwards("damaged");
+        }
+        else
+        {
+            Debug.Log("Missed");
+        }
+
     }
     private void Pause(InputAction.CallbackContext context)
     {

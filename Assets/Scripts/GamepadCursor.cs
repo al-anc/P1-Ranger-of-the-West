@@ -78,13 +78,13 @@ public class GamepadCursor : MonoBehaviour
         InputState.Change(virtualMouse.position, newPosition);
         InputState.Change(virtualMouse.delta, stickValue);
 
-        bool leftTriggerIsPressed = Gamepad.current.leftTrigger.IsPressed();
-        if (previousMouseState != leftTriggerIsPressed)
+        bool rightTriggerIsPressed = Gamepad.current.rightTrigger.IsPressed();
+        if (previousMouseState != rightTriggerIsPressed)
         {
             virtualMouse.CopyState<MouseState>(out var mouseState);
-            mouseState.WithButton(MouseButton.Left, leftTriggerIsPressed);
+            mouseState.WithButton(MouseButton.Left, rightTriggerIsPressed);
             InputState.Change(virtualMouse, mouseState);
-            previousMouseState = leftTriggerIsPressed;
+            previousMouseState = rightTriggerIsPressed;
         }
 
         AnchorCursor(newPosition);
@@ -110,7 +110,7 @@ public class GamepadCursor : MonoBehaviour
         else if (playerInput.currentControlScheme == gamepadScheme && previousControlScheme != gamepadScheme)
         {
             cursorTransform.gameObject.SetActive(true);
-            Cursor.visible = false;
+            Cursor.visible = true;
             InputState.Change(virtualMouse.position, currentMouse.position.ReadValue());
             AnchorCursor(currentMouse.position.ReadValue());
             previousControlScheme = gamepadScheme;

@@ -251,7 +251,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -350,7 +350,7 @@ public partial class @RangerOfTheWestActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": """",
                     ""id"": ""9cd08981-bf4d-4fa3-99de-c94c7d594fc0"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<XInputController>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
