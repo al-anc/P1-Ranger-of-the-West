@@ -127,6 +127,25 @@ public class PlayerController : MonoBehaviour
                 Pausemenu.GetComponent<Menus>().LoadMenu();
             }
         }
+        if (gameOver == true)
+        {
+            bool Restart = Actions.UI.Submit.ReadValue<float>() > 0.1f;
+            if (Restart)
+            {
+                Pausemenu.GetComponent<Menus>().RetryLevel();
+            }
+            bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
+            if (Resume)
+            {
+                //Pausemenu.GetComponent<Menus>().ResumeGame();
+                Pause();
+            }
+            bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
+            if (MainMenu)
+            {
+                Pausemenu.GetComponent<Menus>().LoadMenu();
+            }
+        }
         //     RaycastHit hit;
         //         bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
         //         if(Fire)
