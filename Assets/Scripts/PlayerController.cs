@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        enemies = 51;
+        enemies = 75;
         bonusScore = 15000;
         InvokeRepeating("setBonusScore", 1, 1);
 
