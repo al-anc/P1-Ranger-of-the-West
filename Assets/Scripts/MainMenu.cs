@@ -47,8 +47,16 @@ public class MainMenu : MonoBehaviour
     }
     public void Settings()
     {
+        if (settings == false)
+        {
         SettingsMenu.SetActive(true);
         settings = true;
+        }
+        else
+        {
+        SettingsMenu.SetActive(false);
+        settings = false;     
+        }
     }
     public void SettingsInactive()
     {
