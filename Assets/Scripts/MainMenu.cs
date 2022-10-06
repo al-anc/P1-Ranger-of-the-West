@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject SettingsMenu;
     private RangerOfTheWestActions Actions;
+    private bool settings;
     private void OnEnable()
     {
         Actions.Enable();
@@ -24,11 +25,12 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        settings = false;
     }
     void Update()
     {
                     bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
-            if (Resume)
+            if (Resume && settings == true)
             {
             SettingsMenu.SetActive(false);
             }
@@ -46,6 +48,7 @@ public class MainMenu : MonoBehaviour
     public void Settings()
     {
         SettingsMenu.SetActive(true);
+        settings = true;
     }
     public void SettingsInactive()
     {
