@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
             {
                 Pausemenu.GetComponent<PauseMenu>().LoadGame();
             }
+            Time.timeScale = 0;
         }
         //     RaycastHit hit;
         //         bool Fire = Actions.Player.Fire.ReadValue<float>() > 0.4f;
