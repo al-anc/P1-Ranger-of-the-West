@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
+        score = 150;
         enemies = 75;
-        bonusScore = 15000;
+        bonusScore = 25000;
         InvokeRepeating("setBonusScore", 1, 1);
 
         scoreValue.text = ("0000000" + score.ToString());
@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
+            CancelInvoke("setBonusScore");
+            score = score + bonusScore;
             scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
@@ -93,6 +95,8 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
+            CancelInvoke("setBonusScore");
+            score = score + bonusScore;
             scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
             bool Restart = Actions.UI.Submit.ReadValue<float>() > 0.1f;
             if (Restart)
             {
-                Pausemenu.GetComponent<Menus>().RetryLevel();
+                Pausemenu.GetComponent<PauseMenu>().RetryLevel();
             }
             bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
             if (Resume)
@@ -124,15 +128,18 @@ public class PlayerController : MonoBehaviour
             bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
             if (MainMenu)
             {
-                Pausemenu.GetComponent<Menus>().LoadMenu();
+                Pausemenu.GetComponent<PauseMenu>().LoadMenu();
             }
         }
         if (gameOver == true)
         {
+            CancelInvoke("setBonusScore");
+            score = score + bonusScore;
+            gameOverText.text = ($"Game Over! Final Score: {score} Retry?");
             bool Restart = Actions.UI.Submit.ReadValue<float>() > 0.1f;
             if (Restart)
             {
-                Pausemenu.GetComponent<Menus>().RetryLevel();
+                Pausemenu.GetComponent<PauseMenu>().RetryLevel();
             }
             bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
             if (Resume)
@@ -143,7 +150,7 @@ public class PlayerController : MonoBehaviour
             bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
             if (MainMenu)
             {
-                Pausemenu.GetComponent<Menus>().LoadMenu();
+                Pausemenu.GetComponent<PauseMenu>().LoadMenu();
             }
         }
         //     RaycastHit hit;
