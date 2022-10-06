@@ -5610,6 +5610,7 @@ GameObject:
   - component: {fileID: 600182298}
   - component: {fileID: 600182297}
   - component: {fileID: 600182296}
+  - component: {fileID: 600182299}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -5679,6 +5680,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &600182299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600182295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466f1a05db5ab7548b4f41aad6721e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 993143278}
+  PauseMenuObj: {fileID: 655186312}
 --- !u!1001 &627776474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5934,6 +5949,7 @@ GameObject:
   - component: {fileID: 655186313}
   - component: {fileID: 655186315}
   - component: {fileID: 655186314}
+  - component: {fileID: 655186316}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -6006,6 +6022,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655186312}
   m_CullTransparentMesh: 1
+--- !u!114 &655186316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655186312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466f1a05db5ab7548b4f41aad6721e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 993143278}
+  PauseMenuObj: {fileID: 655186312}
 --- !u!1001 &655269413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7800,7 +7830,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750936298}
+      - m_Target: {fileID: 655186316}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: RetryLevel
         m_Mode: 1
@@ -13515,7 +13545,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750936298}
+      - m_Target: {fileID: 600182299}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: RetryLevel
         m_Mode: 1
@@ -14774,7 +14804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750936298}
+      - m_Target: {fileID: 600182299}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
@@ -18169,7 +18199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750936298}
+      - m_Target: {fileID: 655186316}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
@@ -18400,7 +18430,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750936298}
+      - m_Target: {fileID: 655186316}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
