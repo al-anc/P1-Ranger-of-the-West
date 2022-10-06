@@ -8,7 +8,6 @@ public class Menus : MonoBehaviour
     public GameObject Player;
     public GameObject PauseMenu;
     private RangerOfTheWestActions Actions;
-    private static int Level = 0;
 
     private void OnEnable()
     {
@@ -29,7 +28,6 @@ public class Menus : MonoBehaviour
     {
         Debug.Log("Game Started!");
         SceneManager.LoadScene("Level");
-        Level = 1;
     }
     void Start()
     {

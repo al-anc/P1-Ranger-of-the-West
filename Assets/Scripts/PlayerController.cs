@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
             bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
             if (MainMenu)
             {
-                Pausemenu.GetComponent<PauseMenu>().LoadMenu();
+                Pausemenu.GetComponent<PauseMenu>().LoadGame();
             }
         }
         if (gameOver == true)
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
             bool MainMenu = Actions.UI.Menu.ReadValue<float>() > 0.1f;
             if (MainMenu)
             {
-                Pausemenu.GetComponent<PauseMenu>().LoadMenu();
+                Pausemenu.GetComponent<PauseMenu>().LoadGame();
             }
         }
         //     RaycastHit hit;
