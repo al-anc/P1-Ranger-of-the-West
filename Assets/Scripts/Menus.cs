@@ -10,7 +10,7 @@ public class Menus : MonoBehaviour
     private RangerOfTheWestActions Actions;
     private static int Level = 0;
 
-        private void OnEnable()
+    private void OnEnable()
     {
         Actions.Enable();
     }
