@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject SettingsMenu;
+    private RangerOfTheWestActions Actions;
+    private void OnEnable()
+    {
+        Actions.Enable();
+    }
+    private void OnDisable()
+    {
+        Actions.Disable();
+    }
     
     public void PlayGame()
     {
@@ -15,6 +24,14 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+    }
+    void Update()
+    {
+                    bool Resume = Actions.UI.Back.ReadValue<float>() > 0.1f;
+            if (Resume)
+            {
+            SettingsMenu.SetActive(false);
+            }
     }
     public void ExitGame()
     {
