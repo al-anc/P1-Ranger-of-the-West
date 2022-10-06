@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
-            CancelInvoke("setBonusScore");
-            score = score + bonusScore;
             scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
@@ -95,8 +93,6 @@ public class PlayerController : MonoBehaviour
         {
             GameOverMenu.SetActive(true);
             gameOver = true;
-            CancelInvoke("setBonusScore");
-            score = score + bonusScore;
             scoreValue2.text = ("Score: " + score.ToString());
             enemiesText.text = ("Enemies: " + enemies.ToString());
             gameOverText.text = ($"Game Over! Final Score: {score} Press Esc to exit game.");
@@ -133,8 +129,6 @@ public class PlayerController : MonoBehaviour
         }
         if (gameOver == true)
         {
-            CancelInvoke("setBonusScore");
-            score = score + bonusScore;
             gameOverText.text = ($"Game Over! Final Score: {score} Retry?");
             bool Restart = Actions.UI.Submit.ReadValue<float>() > 0.1f;
             if (Restart)
